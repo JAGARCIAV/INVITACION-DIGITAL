@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+      <div class="item1">
+        <div class="contenido">
+            <div class="titulo">XV</div>
+            <div class="nombre">Keyla Isabel</div>
+            <div class="apellido">Rojas Jaldin</div>
+        </div>
+
+
+      </div>
+      <div class="item2">
+        <div>
+          <p class="pp">HAS CLICK PARA EMPEZAR</p>
+        </div>
+        <!-- Reproductor estilizado -->
+<div class="musica player" aria-label="Reproductor musical">
+  <button class="btn-play" aria-pressed="false" title="Reproducir / Pausar">►</button>
+  <audio id="audio" src="musica/musicafondo.mp3" preload="auto" loop></audio>
+</div>
+          <script>
+    // Controles básicos del reproductor personalizado
+    const audio = document.getElementById('audio');
+    const btn = document.querySelector('.btn-play');
+    const progress = document.querySelector('.progress');
+    const fill = document.querySelector('.progress-fill');
+    const time = document.querySelector('.time');
+
+    function formatTime(sec){
+      const s = Math.floor(sec % 60).toString().padStart(2,'0');
+      const m = Math.floor(sec / 60);
+      return m + ':' + s;
+    }
+
+    btn.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play();
+        btn.textContent = '❚❚';
+        btn.setAttribute('aria-pressed','true');
+      } else {
+        audio.pause();
+        btn.textContent = '►';
+        btn.setAttribute('aria-pressed','false');
+      }
+    });
+
+    audio.addEventListener('timeupdate', () => {
+      const pct = (audio.currentTime / (audio.duration || 1)) * 100;
+      fill.style.width = pct + '%';
+      progress.setAttribute('aria-valuenow', Math.floor(pct));
+      time.textContent = formatTime(audio.currentTime);
+    });
+
+    // click para saltar en la barra
+    progress.addEventListener('click', (e) => {
+      const rect = progress.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const pct = x / rect.width;
+      audio.currentTime = pct * (audio.duration || 0);
+    });
+
+    // iniciar reproduccion automática si el navegador lo permite
+    audio.autoplay = true;
+    audio.volume = 0.9;
+    // intenta reproducir (algunos navegadores bloquean autoplay)
+    audio.play().catch(()=>{ btn.textContent = '►'; });
+  </script>
+
+    <div>
+      <p class="pp">LA MAGIA</p>
+    </div>
+
+           <div class="invitacion">
+        <p>
+          Después de tantos sueños e ilusiones, por fin ha llegado el día que tanto he esperado...  
+          ¡Mis XV Años! Y me encantaría compartir este momento tan especial contigo.
+        </p>
+      </div>
+
+      <script>
+        // Detectar cuando aparece en pantalla
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        });
+
+        const target = document.querySelector('.invitacion');
+        observer.observe(target);
+      </script>
+
+<button id="guardarFecha" class="btn-guardar">Guardar Fecha</button>
+
+<script>
+document.getElementById('guardarFecha').addEventListener('click', () => {
+    const title = "15 años de Keyla Isabel";
+    const startDate = "20250920T090000"; // Formato YYYYMMDDTHHMMSS
+    const endDate = "20250920T230000";   // Fin del evento
+    const description = "Celebración de los 15 años de Keyla Isabel.";
+
+    const icsContent = 
+`BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+SUMMARY:${title}
+DTSTART:${startDate}
+DTEND:${endDate}
+DESCRIPTION:${description}
+END:VEVENT
+END:VCALENDAR`;
+
+    // Crear un enlace tipo data URI para móviles
+    const encoded = encodeURIComponent(icsContent);
+    const url = `data:text/calendar;charset=utf8,${encoded}`;
+
+    const link = document.createElement('a');
+    link.href = url;
+
+    // iOS: Abrir en nueva ventana para que se pueda agregar a Calendario
+    link.target = "_blank";
+    
+    // Nombre de descarga para Android / PC
+    link.download = '15_anos_keyla_isabel.ics';
+    
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+});
+</script>
+
+      <div class="calendario">
+        <div class="calendario-inner">
+          <div class="mes">SEPTIEMBRE 2025</div>
+          <div class="dias-semana">
+            <div>L</div><div>M</div><div>X</div><div>J</div><div>V</div><div>S</div><div>D</div>
+          </div>
+          <div class="dias">
+            <div class="color">1</div><div class="color">2</div><div class="color">3</div><div class="color">4</div><div class="color">5</div><div class="color">6</div><div class="color">7</div>
+            <div class="color">8</div><div class="color">9</div><div class="color">10</div><div class="color">11</div><div class="color">12</div><div class="color">13</div><div class="color">14</div>
+            <div class="color">15</div><div class="color">16</div><div class="color">17</div><div class="color">18</div><div class="color">19</div>
+            <div class="marcado">20</div>
+            <div class="color">21</div><div class="color">22</div><div class="color">23</div><div class="color">24</div><div class="color">25</div><div class="color">26</div><div class="color">27</div>
+            <div class="color">28</div><div class="color">29</div><div class="color">30</div>
+          </div>
+        </div>
+      </div>
+
+        </div>
+
+     
+
+
+      </div>
+    </div>
+
+</body>
+</html>
