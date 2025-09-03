@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="invitacion.css">
+</head>
+<body>
+      <div class="container">
+    <div class="item1">
+        <div class="nombre">Keyla Isabel</div>
+        <div class="subtitle">Mis quince años</div>
+    </div>
+
+    <div class="item2">
+    </div>
+
+        <!-- Inserta esto en tu HTML donde tengas .item3 -->
+<div class="item3">
+    <div class="nombre ">Solo faltan</div>
+  <div class="item3-inner">
+<div id="countdown" class="countdown">
+  <div class="time-part">
+    <span id="days" class="num">0</span>
+  </div>
+  <span class="separator">:</span>
+  <div class="time-part">
+    <span id="hours" class="num">00</span>
+  </div>
+  <span class="separator">:</span>
+  <div class="time-part">
+    <span id="minutes" class="num">00</span>
+  </div>
+  <span class="separator">:</span>
+  <div class="time-part">
+    <span id="seconds" class="num">00</span>
+  </div>
+</div>
+
+    <div id="message" class="message" aria-live="polite"></div>
+  </div>
+</div>
+<script>
+(function () {
+  // Calcula el objetivo: 20 de Septiembre a las 23:59:59 del año correspondiente
+  function getTargetDate() {
+    const now = new Date();
+    const year = now.getFullYear();
+    // mes: 8 = septiembre (0-indexed)
+    let target = new Date(year, 8, 20, 23, 59, 59, 999);
+    if (now > target) {
+      // si ya pasó este año, usar el siguiente
+      target = new Date(year + 1, 8, 20, 23, 59, 59, 999);
+    }
+    return target;
+  }
+
+  const target = getTargetDate();
+  const daysEl = document.getElementById('days');
+  const hoursEl = document.getElementById('hours');
+  const minutesEl = document.getElementById('minutes');
+  const secondsEl = document.getElementById('seconds');
+  const messageEl = document.getElementById('message');
+
+  function pad(n) { return n.toString().padStart(2, '0'); }
+
+  function update() {
+    const now = new Date();
+    const diff = target - now;
+
+    if (diff <= 0) {
+      // Ha llegado (o ya pasó exactamente)
+      daysEl.textContent = '0';
+      hoursEl.textContent = '00';
+      minutesEl.textContent = '00';
+      secondsEl.textContent = '00';
+      messageEl.textContent = '¡Feliz 15 cumpleaños! 🎉';
+      clearInterval(intervalId);
+      return;
+    }
+
+    const secondsTotal = Math.floor(diff / 1000);
+    const days = Math.floor(secondsTotal / (60*60*24));
+    const hours = Math.floor((secondsTotal % (60*60*24)) / (60*60));
+    const minutes = Math.floor((secondsTotal % (60*60)) / 60);
+    const seconds = Math.floor(secondsTotal % 60);
+
+    daysEl.textContent = days;
+    hoursEl.textContent = pad(hours);
+    minutesEl.textContent = pad(minutes);
+    secondsEl.textContent = pad(seconds);
+
+    // Mensaje opcional: muestra la fecha objetivo en formato legible
+    const options = { day: '2-digit', month: 'long', year: 'numeric' };
+    messageEl.textContent = 'Meta: ' + target.toLocaleDateString(undefined, options) + ' a las 23:59:59';
+  }
+
+  // actualizar inmediatamente y luego cada segundo
+  update();
+  const intervalId = setInterval(update, 1000);
+})();
+</script>
+
+<div class="item4">
+    <div class="padres">
+        <h2 class="mes">Mis Padres</h2>
+        <div class="nombrePadres">YENNY JALDIN PACO</div>
+        <div class="nombrePadres">PANCRASIO ROJAS MEDINA</div>
+        <BR></BR>
+        <div class="Mensaje">ME ACOMPAÑAN EN ESTE DÍA,</div>
+        <div class="Mensaje">JUNTO A</div>
+        <br>
+        <h2 class="mes">Mis Padrinos</h2>
+        <div class="nombrePadres">PADRINO CHANACO MOSTASO</div>
+        <div class="nombrePadres">MADRINA VETANCUR GONZALES</div>
+    </div>
+</div>
+
+
+    </div>
+  </div>
+    
+</body>
+</html>

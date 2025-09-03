@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
   <title>Document</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -11,21 +12,26 @@
       <div class="item1">
         <div class="contenido">
             <div class="titulo">XV</div>
-            <div class="nombre">Keyla Isabel</div>
-            <div class="apellido">Rojas Jaldin</div>
+          <div class="nombre">
+            <span class="fijo">Ke</span><span class="efecto yla">yla</span>
+            <span class="fijo"> Isa</span><span class="efecto yla">bel</span>
         </div>
+            <div class="nombre">
 
+        </div>
+        </div>
+      </div>
+      <div class="item-espacio">
+        <p >HAS CLICK PARA EMPEZAR</p>
+        <p >LA MAGIA</p>
 
       </div>
       <div class="item2">
-        <div>
-          <p class="pp">HAS CLICK PARA EMPEZAR</p>
-        </div>
         <!-- Reproductor estilizado -->
-<div class="musica player" aria-label="Reproductor musical">
-  <button class="btn-play" aria-pressed="false" title="Reproducir / Pausar">►</button>
-  <audio id="audio" src="musica/musicafondo.mp3" preload="auto" loop></audio>
-</div>
+      <div class="musica player" aria-label="Reproductor musical">
+        <button class="btn-play" aria-pressed="false" title="Reproducir / Pausar">►</button>
+        <audio id="audio" src="musik/musicafondo.mp3" preload="auto" loop></audio>
+      </div>
           <script>
     // Controles básicos del reproductor personalizado
     const audio = document.getElementById('audio');
@@ -73,10 +79,6 @@
     // intenta reproducir (algunos navegadores bloquean autoplay)
     audio.play().catch(()=>{ btn.textContent = '►'; });
   </script>
-
-    <div>
-      <p class="pp">LA MAGIA</p>
-    </div>
 
            <div class="invitacion">
         <p>
@@ -154,11 +156,102 @@ END:VCALENDAR`;
           </div>
         </div>
       </div>
-
         </div>
-
+        
+        <div class="fecha2">
+          <div class="day">SABADO</div>
+          <div class="numero">20</div>
+          <div class="mes2">SEPTIEMBRE</div>
+        </div>
      
+<!-- Inserta esto en tu HTML donde tengas .item3 -->
+<div class="item3">
+  <div class="item3-inner">
+    <h2 class="titulo2">Solo faltan</h2>
+    <div id="countdown" class="countdown">
+      <div class="time-part">
+        <span id="days" class="num">0</span>
+        <span class="label">Días</span>
+      </div>
+      <div class="time-part">
+        <span id="hours" class="num">00</span>
+        <span class="label">Horas</span>
+      </div>
+      <div class="time-part">
+        <span id="minutes" class="num">00</span>
+        <span class="label">Minutos</span>
+      </div>
+      <div class="time-part">
+        <span id="seconds" class="num">00</span>
+        <span class="label">Segundos</span>
+      </div>
+    </div>
+    <div>
+    <h2 class="titulo2">Para el gran día</h2>
+    </div>
+    <div id="message" class="message" aria-live="polite"></div>
+  </div>
+</div>
+<script>
+(function () {
+  // Calcula el objetivo: 20 de Septiembre a las 23:59:59 del año correspondiente
+  function getTargetDate() {
+    const now = new Date();
+    const year = now.getFullYear();
+    // mes: 8 = septiembre (0-indexed)
+    let target = new Date(year, 8, 20, 23, 59, 59, 999);
+    if (now > target) {
+      // si ya pasó este año, usar el siguiente
+      target = new Date(year + 1, 8, 20, 23, 59, 59, 999);
+    }
+    return target;
+  }
 
+  const target = getTargetDate();
+  const daysEl = document.getElementById('days');
+  const hoursEl = document.getElementById('hours');
+  const minutesEl = document.getElementById('minutes');
+  const secondsEl = document.getElementById('seconds');
+  const messageEl = document.getElementById('message');
+
+  function pad(n) { return n.toString().padStart(2, '0'); }
+
+  function update() {
+    const now = new Date();
+    const diff = target - now;
+
+    if (diff <= 0) {
+      // Ha llegado (o ya pasó exactamente)
+      daysEl.textContent = '0';
+      hoursEl.textContent = '00';
+      minutesEl.textContent = '00';
+      secondsEl.textContent = '00';
+      messageEl.textContent = '¡Feliz 15 cumpleaños! 🎉';
+      clearInterval(intervalId);
+      return;
+    }
+
+    const secondsTotal = Math.floor(diff / 1000);
+    const days = Math.floor(secondsTotal / (60*60*24));
+    const hours = Math.floor((secondsTotal % (60*60*24)) / (60*60));
+    const minutes = Math.floor((secondsTotal % (60*60)) / 60);
+    const seconds = Math.floor(secondsTotal % 60);
+
+    daysEl.textContent = days;
+    hoursEl.textContent = pad(hours);
+    minutesEl.textContent = pad(minutes);
+    secondsEl.textContent = pad(seconds);
+
+    // Mensaje opcional: muestra la fecha objetivo en formato legible
+    const options = { day: '2-digit', month: 'long', year: 'numeric' };
+    messageEl.textContent = 'Meta: ' + target.toLocaleDateString(undefined, options) + ' a las 23:59:59';
+  }
+
+  // actualizar inmediatamente y luego cada segundo
+  update();
+  const intervalId = setInterval(update, 1000);
+})();
+</script>
 
       </div>
     </div>

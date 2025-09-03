@@ -1,0 +1,268 @@
+/* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #7a0e17 ;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column; /* Los items en columna por defecto */
+      width: 100%;
+      max-width: 620px; /* Para que se vea bien en desktop */
+    }
+
+    .item {
+      background: #222;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+
+    /* Primer item con imagen de fondo */
+    .item1 {
+      background: url("img/inicio.jpg") no-repeat center center/cover;
+      color: white;
+      min-height: 800px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 40px;
+    }
+
+@font-face {
+  font-family: 'Amoresa';
+  src: url('fonts/Amoresa-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Augereau';
+  src: url('fonts/Augereau-Bold-Italic.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+    .nombre {
+        display: flex;
+    font-family: 'Amoresa', cursive;
+    font-size: 3em;
+    color: #ffffff; /* ejemplo: rojo vino */
+    text-align: center;
+    padding-top: 50px;
+    }
+
+    .subtitle {
+      font-family: 'Augereau', cursive;
+      font-size: 1.5em;
+      color: #ffffff; /* ejemplo: rojo vino */
+      text-align: center;
+    }
+
+    .item2 {
+      background: url("img/logofff.png") no-repeat center center/cover;
+      color: white;
+      min-height: 400px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .item2 img {
+      max-width: 100%;
+      height: 300px;
+      width:300px;
+    }
+
+    .item3 {
+      background: url("img/tiempo.jpg") no-repeat center center/cover;
+      color: white;
+      min-height: 800px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+.titulo2 {
+    display: flex;
+    margin: 0 0 5px 0;
+    font-size:50px;
+    color: #ffffff;
+    font-family: 'Allura', cursive; /* cambiado a Allura (más delgada) */
+    margin-top: 50px;
+  }
+
+  .countdown {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    font-size: 40px;
+    justify-content: end;
+  }
+
+  .time-part {
+
+    padding:10px 12px;
+    min-width:64px;
+      content: ":";
+  font-size: 1.8em;   /* tamaño */
+  margin-top: -20px;      /* espacio entre números */
+  }
+
+  .num {
+    display:block;
+    font-size:60px;
+    font-weight:700;
+    letter-spacing:0.8px;
+  }
+
+  .label {
+    display:block;
+    font-size:11px;
+    opacity:0.8;
+    margin-top:4px;
+  }
+
+
+
+
+  .message {
+    margin-top:10px;
+    font-weight:600;
+    color: #fff5f500;
+  }
+
+
+   /* Contenedor principal */
+.item4 {
+    background-color: #7a0e17;
+    color: white;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+}
+
+/* Bloque de padres/padrinos */
+.padres {
+    background-color: #7a0e17; /* Mantener coherencia con el contenedor */
+    color: #fff5e6; /* Contraste legible */
+    border-radius: 5px;
+    padding: 30px 40px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    margin: 20px 0; /* Separación entre bloques */
+}
+
+
+
+.mes {
+  margin-top: 15px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-align: center;
+  padding-bottom: 6px;
+
+  /* 🎨 Degradado dorado brillante */
+  background: linear-gradient(90deg, 
+    #ffd700, /* dorado clásico */
+    #ffae00, /* dorado oscuro */
+    #fff8dc, /* reflejo brillante */
+    #ffae00,
+    #ffd700
+  );
+  background-size: 200% auto; /* animación suave */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  /* ✨ Animación de brillo */
+  animation: shine 3s linear infinite;
+}
+
+@keyframes shine {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+
+
+/* Animación del brillo */
+@keyframes goldShine {
+    0% {
+        background-position: 200% 0;
+    }
+    50% {
+        background-position: -50% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+
+/* Separador elegante debajo de los títulos */
+.padres h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 2px;
+    background-color: #ffd7b5;
+    margin: 10px auto 0;
+    border-radius: 1px;
+}
+
+/* Nombres de padres y padrinos */
+.nombrePadres {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 5px 0;
+    color: #ffd7b5; /* Tono cálido y legible */
+}
+
+/* Mensajes intermedios */
+.Mensaje {
+    font-size: 1rem;
+    font-style: italic;
+    margin: 10px 0;
+    color: #ffe6cc; /* Color suave y elegante */
+}
+
+    /* Responsivo para pantallas más grandes */
+    @media (min-width: 768px) {
+      .container {
+        flex-direction: row; /* Los items en fila */
+        flex-wrap: wrap; /* Que bajen si no entran */
+      }
+      .item {
+        flex: 1 1 calc(50% - 1rem); /* 2 items por fila */
+      }
+      .item1 {
+        flex: 1 1 100%; /* El primer item ocupa toda la fila */
+      }
+    }
