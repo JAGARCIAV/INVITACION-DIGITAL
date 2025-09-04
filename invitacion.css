@@ -659,17 +659,19 @@
     }
 
 .item7 {
-  background: url("img/tiempo.jpg") no-repeat center center/cover;
+  background: url("img/botto.jpg") no-repeat center center/cover;
   color: white;
   min-height: 800px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   text-align: center;
   position: relative; /* Necesario para overlay */
   margin: 0;
   padding: 0;
   overflow: hidden;
+  flex-direction: column;
+  
 }
 
 /* Capa oscura encima del fondo */
@@ -683,6 +685,7 @@
 
 /* Texto final */
 .final {
+    margin-top: 100px;
   font-family: 'Augereau', cursive;
   font-size: 4rem;
   font-weight: bold;
@@ -693,9 +696,10 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: shine 3s linear infinite, fadeInUp 1.5s ease forwards;
-    margin-bottom: 200px;
-
+  
 }
+
+
 
 /* Brillo dorado en movimiento */
 @keyframes shine {
