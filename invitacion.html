@@ -10,14 +10,64 @@
       <div class="container">
     <div class="item1">
         <div class="nombre">Keyla Isabel</div>
-        <div class="subtitle">Mis quince años</div>
+        <div class="subtitle">Jaldin Rojas</div>
     </div>
 
-    <div class="item2">
+<div class="item2 degradado">
+  <div class="top-item2">
+    <div class="subtitle2">HAS CLICK PARA EMPEZAR LA MAGIA</div>
+    <div class="musica">
+      <audio id="bg-music" src="musik/musicafondo.mp3" loop></audio>
+      <button id="music-btn" onclick="toggleMusic()">▶</button>
+
     </div>
+            <div>
+        <img width="300px" src="img/separador2.png">
+    </div>
+  </div>
+
+<div class="bottom-item2">
+  <div class="SABADO hidden">SÁBADO</div>
+  <div class="DIA mes3">20</div>
+  <div class="SEPTIEMBRE hidden">SEPTIEMBRE</div>
+</div>
+
+</div>
+
+<script>
+  const audio = document.getElementById('bg-music');
+  const btn = document.getElementById('music-btn');
+
+  // Play / Pause
+  function toggleMusic() {
+    if (audio.paused) {
+      audio.play();
+      btn.textContent = "⏸";
+    } else {
+      audio.pause();
+      btn.textContent = "▶";
+    }
+  }
+
+  // Animación al hacer scroll (IntersectionObserver)
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+        observer.unobserve(entry.target); // solo una vez
+      }
+    });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('.SABADO, .SEPTIEMBRE').forEach(el => {
+    observer.observe(el);
+  });
+</script>
+
+
 
         <!-- Inserta esto en tu HTML donde tengas .item3 -->
-<div class="item3">
+<div class="item3 degradado2">
     <div class="nombre ">Solo faltan</div>
   <div class="item3-inner">
 <div id="countdown" class="countdown">
@@ -102,7 +152,10 @@
 })();
 </script>
 
-<div class="item4">
+<div class="item4 degradado">
+    <div>
+        <img width="300px" src="img/top.png">
+    </div>
     <div class="padres">
         <h2 class="mes">Mis Padres</h2>
         <div class="nombrePadres">YENNY JALDIN PACO</div>
@@ -115,11 +168,59 @@
         <div class="nombrePadres">PADRINO CHANACO MOSTASO</div>
         <div class="nombrePadres">MADRINA VETANCUR GONZALES</div>
     </div>
+        <div>
+        <img width="300px" src="img/botton.png">
+    </div>
 </div>
 
-
-    </div>
+<div class="item5">
+    <h2 class="mes2">Recepción</h2>
+    <p>Ubicación: El Olimpo</p>
+    <a class="btn-maps" href="https://maps.app.goo.gl/HEjKnAqFKymNPytJ7?g_st=aw " target="_blank">
+      Ver en Google Maps
+    </a>
   </div>
+
+<div class="item6 degradado"> 
+  <div class="top-img">
+    <img width="300px" src="img/top.png" alt="Decoración superior">
+  </div>
+
+  <h2 class="titulo-dorado">Código de vestimenta</h2>
+  <h3 class="subtitulo-dorado">DE GALA</h3>
+
+  <div class="vestimenta">
+    <img width="200px" src="img/galas.png" alt="Vestimenta de gala">
+  </div>
+
+  <h2 class="titulo-dorado">Colores reservados</h2>
+  <p class="texto-simple subtitle">para la Quinceañera</p>
+
+  <div class="circulos">
+    <div class="circulo dorado"></div>
+    <div class="circulo negro"></div>
+    <div class="circulo vino"></div>
+  </div>
+
+  <p class="texto-simple subtitle">Favor de evitarlos</p>
+
+   <div class="bottom-img">
+    <img width="300px" src="img/botton.png" alt="Decoración inferior">
+  </div>
+  <p class="titulo-dorado">Nos gustaría contar<br>con tu presencia</p>
+
+
+</div>
+<div class="item7">
+    <div class="final">No Faltes</div>
+</div>
+<footer>
+  <p>© 2025 | Desarrollado por <span>Ing. José Armando García</span> | Tel: <a href="tel:+59163553990">63553990</a></p>
+</footer>
+
+
+  </div>
+  
     
 </body>
 </html>

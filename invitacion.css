@@ -14,6 +14,52 @@
       font-family: Arial, sans-serif;
     }
 
+.degradado {
+    position: relative;
+    background: #7a0e17; /* fondo base */
+    color: white;
+    padding: 40px;
+    border-radius: 0px;
+    text-align: center;
+    z-index: 1;
+    overflow: hidden; /* evita que el degradado se salga */
+}
+
+.degradado::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 0px;
+    background: 
+        linear-gradient(to right, rgba(0,0,0,0.4), rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.4)), /* izquierda y derecha */
+        linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.4)); /* arriba y abajo */
+    z-index: -1;
+}
+
+.degradado2 {
+    position: relative;
+    background: #7a0e17; /* fondo base */
+    color: white;
+    padding: 0px;
+    border-radius: 0px;
+    text-align: center;
+    z-index: 1;
+    overflow: hidden; /* evita que el degradado se salga */
+}
+
+.degradado2::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 0px;
+    background: 
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.534), rgba(0, 0, 0, 0.089) 20%, rgba(0, 0, 0, 0.151) 80%, rgba(0, 0, 0, 0.767)); /* arriba y abajo */
+    z-index: -1;
+}
+
+
+
+
     .container {
       display: flex;
       flex-direction: column; /* Los items en columna por defecto */
@@ -68,32 +114,144 @@
 
     .subtitle {
       font-family: 'Augereau', cursive;
-      font-size: 1.5em;
+      font-size: 1.7em;
       color: #ffffff; /* ejemplo: rojo vino */
       text-align: center;
     }
 
-    .item2 {
-      background: url("img/logofff.png") no-repeat center center/cover;
-      color: white;
-      min-height: 400px;
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 15px;
+        .subtitle2 {
+      font-family: 'Augereau', cursive;
+      font-size: 1em;
+      color: #ffffff; /* ejemplo: rojo vino */
+      text-align: center;
+      padding-bottom: 10px;
     }
+    
 
-    .item2 img {
-      max-width: 100%;
-      height: 300px;
-      width:300px;
-    }
+.item2 {
+      background-color: #7a0e17;
+    background-image: 
+      repeating-linear-gradient(
+        45deg, 
+        rgba(0,0,0,0.2) 0px, 
+        rgba(0,0,0,0.2) 1px, 
+        transparent 2px, 
+        transparent 6px
+      );
+    background: url("img/musik3.png") no-repeat center center/cover;
+  color: white;
+  min-height: 750px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 20px;
+  text-align: center;
+}
+
+/* Texto arriba */
+.magia {
+  font-family: 'Amoresa', cursive;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #7a0e17;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px rgba(0,0,0,0.8);
+  animation: pulse 2s infinite;
+  cursor: pointer;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); text-shadow: 0 0 8px #7a0e17; }
+  50% { transform: scale(1.1); text-shadow: 0 0 15px #7a0e17; }
+}
+
+.musica{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+/* Botón circular música */
+.musica button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgb(255, 255, 255);
+  color: #7a0e17;
+  font-size: 1.5rem;
+  border: 2px solid #7a0e17;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.musica button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px #7a0e17;
+}
+
+/* Contenedor en columna centrada */
+.bottom-item2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+/* Estilos comunes */
+.SABADO, .SEPTIEMBRE {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 0 0 12px rgba(0,0,0,0.8);
+  opacity: 0; /* Ocultos hasta animación */
+}
+
+.DIA {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #FFD700; /* Dorado */
+  margin: 0;
+}
+
+/* Estado oculto */
+.hidden {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+/* Animaciones */
+.SABADO.animate {
+  animation: slideLeft 1.5s ease forwards;
+}
+
+.SEPTIEMBRE.animate {
+  animation: slideRight 1.5s ease forwards;
+  animation-delay: 0.3s;
+}
+
+@keyframes slideLeft {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+
 
     .item3 {
       background: url("img/tiempo.jpg") no-repeat center center/cover;
       color: white;
-      min-height: 800px;
+      min-height: 850px;
       display: flex;
       justify-content: center;
       flex-direction: column;
@@ -125,12 +283,12 @@
     min-width:64px;
       content: ":";
   font-size: 1.8em;   /* tamaño */
-  margin-top: -20px;      /* espacio entre números */
+  margin-top: -7px;      /* espacio entre números */
   }
 
   .num {
     display:block;
-    font-size:60px;
+    font-size:40px;
     font-weight:700;
     letter-spacing:0.8px;
   }
@@ -155,20 +313,27 @@
    /* Contenedor principal */
 .item4 {
     background-color: #7a0e17;
+    background-image: 
+      repeating-linear-gradient(
+        45deg, 
+        rgba(0,0,0,0.2) 0px, 
+        rgba(0,0,0,0.2) 1px, 
+        transparent 2px, 
+        transparent 6px
+      );
     color: white;
-    min-height: 400px;
+    min-height: 500px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 15px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 20px;
 }
 
+
+
 /* Bloque de padres/padrinos */
 .padres {
-    background-color: #7a0e17; /* Mantener coherencia con el contenedor */
     color: #fff5e6; /* Contraste legible */
     border-radius: 5px;
     padding: 30px 40px;
@@ -187,6 +352,41 @@
   margin-bottom: 5px;
   text-align: center;
   padding-bottom: 6px;
+      font-family: 'Amoresa', cursive;
+
+
+  /* 🎨 Degradado dorado brillante */
+  background: linear-gradient(90deg, 
+    #ffd700, /* dorado clásico */
+    #ffae00, /* dorado oscuro */
+    #fff8dc, /* reflejo brillante */
+    #ffae00,
+    #ffd700
+  );
+  background-size: 200% auto; /* animación suave */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  /* ✨ Animación de brillo */
+  animation: shine 3s linear infinite;
+}
+
+.mes2 {
+  margin-top: 15px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-align: center;
+  padding-bottom: 6px;
+}
+
+.mes3 {
+  margin-top: 0px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0px;
+  text-align: center;
 
   /* 🎨 Degradado dorado brillante */
   background: linear-gradient(90deg, 
@@ -230,7 +430,7 @@
 .padres h2::after {
     content: '';
     display: block;
-    width: 60px;
+    width: 200px;
     height: 2px;
     background-color: #ffd7b5;
     margin: 10px auto 0;
@@ -253,6 +453,197 @@
     color: #ffe6cc; /* Color suave y elegante */
 }
 
+.item5 {
+      background: linear-gradient(135deg, #000, #313131);
+      text-align: center;
+    color: white;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+}
+
+    .item5 h2 {
+      font-size: 3rem;
+      color: #FFD700; /* Dorado */
+      margin-bottom: 15px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+    }
+
+    .item5 p {
+      font-size: 1.2rem;
+      color: #ddd;
+      margin-bottom: 25px;
+    }
+
+    .btn-maps {
+      display: inline-block;
+      padding: 12px 25px;
+      font-size: 1rem;
+      color: #000;
+      background: linear-gradient(90deg, #FFD700, #c9a20d, #FFD700);
+      border: none;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      background-size: 200% auto;
+      box-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+      animation: shine 3s linear infinite;
+    }
+
+    .btn-maps:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.9);
+    }
+
+    @keyframes shine {
+      0% { background-position: 0% center; }
+      50% { background-position: 100% center; }
+      100% { background-position: 0% center; }
+    }
+
+.item6 {
+        background-color: #7a0e17;
+    background-image: 
+      repeating-linear-gradient(
+        45deg, 
+        rgba(0,0,0,0.2) 0px, 
+        rgba(0,0,0,0.2) 1px, 
+        transparent 2px, 
+        transparent 6px
+      );
+    color: white;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0px;
+}
+
+/* Título */
+.item6 > div:first-child {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #7a0e17;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Texto "GALA" */
+.item6 > div:nth-child(2) {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #d4af37; /* dorado */
+    text-shadow: 0 0 8px rgba(212,175,55,0.7);
+    animation: goldPulse 3s infinite;
+}
+
+.item6 {
+  background-color: #7a0e17;
+  color: white;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Imagen decorativa arriba y abajo */
+.top-img, .bottom-img {
+  margin: 15px 0;
+}
+
+.titulo-dorado {
+  font-family: 'Amoresa', cursive;
+  font-size: 2.5rem;
+  margin: 15px 0 5px;
+  background: linear-gradient(90deg, #ffd700, #ffae00, #fff8dc, #ffae00, #ffd700);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s linear infinite;
+}
+
+.subtitulo-dorado {
+  font-family: 'Augereau', cursive;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #FFD700;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+  margin-bottom: 20px;
+  animation: goldPulse 3s infinite;
+}
+
+.vestimenta {
+  margin: 20px 0;
+}
+
+/* Texto secundario */
+.texto-simple {
+  font-size: 1.7rem;
+  margin: 10px 0;
+  color: #ffe6cc;
+}
+
+/* Círculos */
+.circulos {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
+    background: white;
+    width: 270px;
+    height: 85px;
+    border-radius: 20px;
+
+}
+
+.circulo {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  animation: bounce 2s infinite;
+  margin-top: 11px;
+}
+
+.circulo.dorado { background: #cc1103; }
+.circulo.negro { background: #fd0000; }
+.circulo.vino { background: #7a0e17; }
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes goldPulse {
+  0%, 100% { text-shadow: 0 0 10px rgba(255,215,0,0.6); }
+  50% { text-shadow: 0 0 20px rgba(255,215,0,1); }
+}
+
+@keyframes shine {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+
     /* Responsivo para pantallas más grandes */
     @media (min-width: 768px) {
       .container {
@@ -266,3 +657,87 @@
         flex: 1 1 100%; /* El primer item ocupa toda la fila */
       }
     }
+
+.item7 {
+  background: url("img/tiempo.jpg") no-repeat center center/cover;
+  color: white;
+  min-height: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative; /* Necesario para overlay */
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Capa oscura encima del fondo */
+.item7::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.267); /* negro translúcido */
+  z-index: 0;
+}
+
+/* Texto final */
+.final {
+  font-family: 'Augereau', cursive;
+  font-size: 4rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  z-index: 1;
+  background: linear-gradient(90deg, #ffd700, #ffae00, #fff8dc, #ffae00, #ffd700);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s linear infinite, fadeInUp 1.5s ease forwards;
+    margin-bottom: 200px;
+
+}
+
+/* Brillo dorado en movimiento */
+@keyframes shine {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Aparición elegante */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+    footer {
+    background-color:#181818; /* color neutro, discreto */
+    color: #b9b8b8;
+    text-align: center;
+    font-size: 0.5rem;
+    padding: 12px 10px;
+    margin-top: 0px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+footer span {
+    font-weight: 600;
+    color: #ffa600; /* detalle elegante en vino */
+}
+
+footer a {
+    color: #b6b6b6;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #ffffff;
+}
