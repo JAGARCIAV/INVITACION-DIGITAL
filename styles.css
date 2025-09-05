@@ -175,8 +175,13 @@
 /* 🔤 Declaración de fuentes */
 @font-face {
   font-family: 'Amoresa';
-  src: url('fonts/Amoresa-Regular.otf') format('opentype');
+  src: url('fonts/amoresa-regular.woff2') format('woff2'),
+       url('fonts/amoresa-regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
+
 
 @font-face {
   font-family: 'Augereau';
@@ -184,14 +189,15 @@
 }
 
 @font-face {
+  font-family: 'RhymeFormal';
+  src: url('fonts/rhyme-formal.otf') format('opentype');
+}
+
+@font-face {
   font-family: 'Storytelling';
   src: url('fonts/StorytellingDEMO.ttf') format('truetype');
 }
 
-@font-face {
-  font-family: 'RhymeFormal';
-  src: url('fonts/rhyme-formal.otf') format('opentype');
-}
 
 /* 🔤 Clases reutilizables */
 .font-amoresa { font-family: 'Amoresa', serif; }
