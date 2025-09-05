@@ -140,23 +140,25 @@
         flex-direction: row;
         gap: 15px;
         margin-bottom: 70px;
+        margin-top: 10px;
     }
     .mis{
         display: flex;
         font-family: 'Augereau', cursive;
-        font-size: 2.5em;
+        font-size: 2em;
         color: #ffffff; /* ejemplo: rojo vino */
         text-align: center;
-        padding-top: 20px;
+        padding-top: 8px;
     }
 
     .edad{
                 display: flex;
 
         font-family: 'Augereau', cursive;
-        font-size: 6em;
+        font-size: 4em;
         color: #ffffff; /* ejemplo: rojo vino */
         text-align: center;
+        padding-top: 5px;
     }
 
 .salon{
@@ -198,14 +200,27 @@
   font-style: normal;
 }
 
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
 
-    .nombrekeyla {
-        display: flex;
-    font-family: 'Amoresa', cursive;
-    font-size: 3.2em;
-    color: #ffffff; /* ejemplo: rojo vino */
-    text-align: center;
-    }
+.nombrekeyla {
+  position: relative; /* clave: referencia para la corona */
+  font-family: 'Amoresa', cursive !important;
+  font-size: 3.2em;
+  color: #ffffff;
+}
+
+.corona {
+  position: absolute;
+  top: -55px;   /* ajusta según el tamaño */
+  right: -75px; /* mueve la corona hacia la esquina */
+  width: 140px;  /* tamaño de la corona */
+  transform: rotate(20deg); /* inclinación de la corona */
+}
 
         .nombre2 {
         display: flex;
@@ -268,6 +283,15 @@
         .titlemus {
             font-size: 70px;
             color: #2c2c2c;
+            margin-bottom: 40px;
+            font-weight: 400;
+            line-height: 0;
+            transform: rotate(-1deg);
+            font-family: 'storytelling';
+        }
+                .titlemuskeyla {
+            font-size: 120px;
+            color: #ffffff;
             margin-bottom: 40px;
             font-weight: 400;
             line-height: 0;
