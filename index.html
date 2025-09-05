@@ -3,26 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+    <title>15 Años de Keyla Isabel</title>
     <link rel="stylesheet" href="invitacion.css">
 </head>
 <body>
       <div class="container">
-    <div class="item1">
-        <div class="nombre">Keyla Isabel</div>
-        <div class="subtitle">Jaldin Rojas</div>
+    <div class="item1 degradado2">
+          <div class="nombre">Keyla Isabel</div>
+        <div class="lado">
+          <div class="mis">Mis</div>
+          <div class="edad">XV</div>
+          <div class="mis">Años</div>
+        </div>
+
+    </div>
+
+    <div class="item-musica">
+       <div class="music-player">
+        <h1 class="titlemus">Dale play a mi canción</h1>
+        <h1  class="titlemus2">favorita</h1>
+        
+        <!-- Added audio element for music playback -->
+        <audio id="audioPlayer" preload="metadata">
+            <source src="musik/seraPorqueTeAmo.mp3" type="audio/mpeg">
+            Tu navegador no soporta el elemento de audio.
+        </audio>
+        
+        <div class="controls">
+            <button class="control-btn side-btn"></button>
+            <button class="control-btn prev-btn" id="prevBtn"></button>
+            <button class="control-btn play-btn" id="playBtn"></button>
+            <button class="control-btn next-btn" id="nextBtn"></button>
+            <button class="control-btn side-btn"></button>
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar">
+                <div class="progress-fill" id="progressFill">
+                    <div class="progress-handle" id="progressHandle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const audio = document.getElementById('audioPlayer');
+        const playBtn = document.getElementById('playBtn');
+        const progressBar = document.getElementById('progressBar');
+        const progressFill = document.getElementById('progressFill');
+        const progressHandle = document.getElementById('progressHandle');
+
+        let isPlaying = false;
+        let isDragging = false;
+
+        // Play/Pause functionality
+        playBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                audio.pause();
+                playBtn.classList.remove('playing');
+                isPlaying = false;
+            } else {
+                audio.play();
+                playBtn.classList.add('playing');
+                isPlaying = true;
+            }
+        });
+
+        // Update progress bar as audio plays
+        audio.addEventListener('timeupdate', () => {
+            if (!isDragging && audio.duration) {
+                const progress = (audio.currentTime / audio.duration) * 100;
+                progressFill.style.width = progress + '%';
+            }
+        });
+
+        // Handle progress bar clicking
+        progressBar.addEventListener('click', (e) => {
+            const rect = progressBar.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const percentage = (clickX / rect.width) * 100;
+            const newTime = (percentage / 100) * audio.duration;
+            
+            audio.currentTime = newTime;
+            progressFill.style.width = percentage + '%';
+        });
+
+        // Handle progress handle dragging
+        progressHandle.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            e.preventDefault();
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                const rect = progressBar.getBoundingClientRect();
+                const mouseX = e.clientX - rect.left;
+                const percentage = Math.max(0, Math.min(100, (mouseX / rect.width) * 100));
+                
+                progressFill.style.width = percentage + '%';
+                
+                if (audio.duration) {
+                    audio.currentTime = (percentage / 100) * audio.duration;
+                }
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+
+        // Reset when audio ends
+        audio.addEventListener('ended', () => {
+            playBtn.classList.remove('playing');
+            isPlaying = false;
+            progressFill.style.width = '0%';
+        });
+
+        // Handle audio loading
+        audio.addEventListener('loadedmetadata', () => {
+            console.log('Audio loaded successfully');
+        });
+
+        audio.addEventListener('error', (e) => {
+            console.log('Error loading audio:', e);
+            alert('No se pudo cargar el archivo de audio. Verifica que el archivo musik/regeton.mp3 existe.');
+        });
+    </script>
     </div>
 
 <div class="item2 degradado">
   <div class="top-item2">
-    <div class="subtitle2">HAS CLICK PARA EMPEZAR LA MAGIA</div>
+    
     <div class="musica">
-      <audio id="bg-music" src="musik/seraPorqueTeAmo.mp3" loop></audio>
-      <button id="music-btn" onclick="toggleMusic()">▶</button>
+      <!--<audio id="bg-music" src="musik/seraPorqueTeAmo.mp3" loop></audio>-->
+      
 
     </div>
             <div>
-        <img width="300px" src="img/separador2.png">
+        <img width="200px" src="img/separador2.png">
     </div>
   </div>
 
@@ -35,19 +153,8 @@
 </div>
 
 <script>
-  const audio = document.getElementById('bg-music');
   const btn = document.getElementById('music-btn');
 
-  // Play / Pause
-  function toggleMusic() {
-    if (audio.paused) {
-      audio.play();
-      btn.textContent = "⏸";
-    } else {
-      audio.pause();
-      btn.textContent = "▶";
-    }
-  }
 
   // Animación al hacer scroll (IntersectionObserver)
   const observer = new IntersectionObserver((entries) => {
@@ -68,28 +175,37 @@
 
         <!-- Inserta esto en tu HTML donde tengas .item3 -->
 <div class="item3 degradado2">
-    <div class="nombre ">Solo faltan</div>
+    <div class="nombre ">¡Tan solo</div>
+        <div class="nombre ">faltan!</div>
+
   <div class="item3-inner">
 <div id="countdown" class="countdown">
   <div class="time-part">
     <span id="days" class="num">0</span>
+      <span class="label">Días</span>
   </div>
   <span class="separator">:</span>
   <div class="time-part">
     <span id="hours" class="num">00</span>
+          <span class="label">Horas</span>
   </div>
   <span class="separator">:</span>
   <div class="time-part">
     <span id="minutes" class="num">00</span>
+          <span class="label">Minutos</span>  
   </div>
   <span class="separator">:</span>
   <div class="time-part">
     <span id="seconds" class="num">00</span>
+          <span class="label">Segundos</span>
   </div>
 </div>
       <div>
     <img width="200px" src="img/separador2botton.png" alt="">
   </div>
+   <div class="nombre2 ">PARA ESTE DIA TAN</div>
+      <div class="nombre2 ">ESPECIAL</div>
+
     <div id="message" class="message" aria-live="polite"></div>
 
   </div>
@@ -178,23 +294,37 @@
 </div>
 
 <div class="item5">
-    <h2 class="mes2">Recepción</h2>
-    <p>Ubicación: El Olimpo</p>
+
+      <img width="60px"  style="margin-top: 15px; margin-bottom: 15px;" src="img/fiesta.png" alt="Decoración inferior">
+
+    <h2 class="salon">SALÓN</h2>
+      <H2 class="salon">EL OLIMPO</H2>
     <a class="btn-maps" href="https://maps.app.goo.gl/HEjKnAqFKymNPytJ7?g_st=aw " target="_blank">
       Ver en Google Maps
     </a>
   </div>
+    <div class="item-regalo degradadocabeza">
+          <img width="200px" src="img/separador2.png" alt="Decoración superior">
+          <div>
+            <h2 class="titulo-dorado">Regalos</h2>
+            <h3 class="texto-simple subtitle">El mejor regalo que me puedes dar es tu</h3>
+            <h3 class="texto-simple subtitle">presencia, pero si algo me quieres</h3>
+            <h3 class="texto-simple subtitle">obsequiar estaré muy agradecida de</h3>
+            <h3 class="texto-simple subtitle">recibirlo el día de mi fiesta.</h3>
+          </div>
+              <img width="200px" src="img/separador2botton.png" alt="Decoración superior">
+  </div>
 
-<div class="item6 degradado"> 
+<div class="item6 degradadoabajo"> 
   <div class="top-img">
-    <img width="300px" src="img/top.png" alt="Decoración superior">
+    <img width="300px" src="img/corona.png" alt="Decoración superior">
   </div>
 
   <h2 class="titulo-dorado">Código de vestimenta</h2>
-  <h3 class="subtitulo-dorado">DE GALA</h3>
+  <h3 class="subtitulo-dorado">Elegante</h3>
 
   <div class="vestimenta">
-    <img width="200px" src="img/galas.png" alt="Vestimenta de gala">
+    <img width="200px" src="img/duo.png" alt="Vestimenta de gala">
   </div>
 
   <h2 class="titulo-dorado">Colores reservados</h2>
@@ -216,10 +346,28 @@
 
 </div>
 <div class="item7 degradado2">
-    <div class="final">No Faltes</div>
-    <div>
+    <div class="final">No Faltes
+          <div>
         <img width="300px" src="img/separador2botton.png" alt="">
     </div>
+
+    </div>
+
+     <div class="btn-reg" onclick="registrar()">
+    Confirmar Asistencia
+  </div>
+
+  <script>
+function registrar() {
+  if(localStorage.getItem("asistenciaRegistrada")) {
+    alert("Ya confirmaste tu asistencia ✅");
+  } else {
+    localStorage.setItem("asistenciaRegistrada", "true");
+    window.location.href = "https://docs.google.com/forms/d/e/FORM_ID/viewform";
+  }
+}
+
+  </script>
 </div>
 <footer>
   <p>© 2025 | Desarrollado por <span >Ing. José Armando García</span> | Tel: <a href="tel:+59163553990">63553990</a></p>
