@@ -216,9 +216,9 @@
 
 .corona {
   position: absolute;
-  top: -55px;   /* ajusta según el tamaño */
+  top: -70px;   /* ajusta según el tamaño */
   right: -75px; /* mueve la corona hacia la esquina */
-  width: 140px;  /* tamaño de la corona */
+  width: 150px;  /* tamaño de la corona */
   transform: rotate(20deg); /* inclinación de la corona */
 }
 
