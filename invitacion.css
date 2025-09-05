@@ -172,33 +172,33 @@
         
 }
 
+/* 🔤 Declaración de fuentes */
 @font-face {
   font-family: 'Amoresa';
   src: url('fonts/Amoresa-Regular.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
 }
 
 @font-face {
-  font-family: 'Augereau' ;
+  font-family: 'Augereau';
   src: url('fonts/Augereau-Bold-Italic.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
 }
 
 @font-face {
-  font-family: 'storytelling';
-  src: url('fonts/StorytellingDEMO.ttf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
+  font-family: 'Storytelling';
+  src: url('fonts/StorytellingDEMO.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'rhyme-formal';
+  font-family: 'RhymeFormal';
   src: url('fonts/rhyme-formal.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
 }
+
+/* 🔤 Clases reutilizables */
+.font-amoresa { font-family: 'Amoresa', serif; }
+.font-augereau { font-family: 'Augereau', serif; }
+.font-story { font-family: 'Storytelling', cursive; }
+.font-rhyme { font-family: 'RhymeFormal', serif; }
+
 
 .header {
   display: flex;
@@ -208,10 +208,10 @@
 }
 
 .nombrekeyla {
-  position: relative; /* clave: referencia para la corona */
-  font-family: 'Amoresa', cursive !important;
+  font-family: 'Amoresa', serif;
   font-size: 3.2em;
-  color: #ffffff;
+  color: #fff;
+  position: relative;
 }
 
 .corona {
@@ -222,28 +222,28 @@
   transform: rotate(20deg); /* inclinación de la corona */
 }
 
-        .nombre2 {
-        display: flex;
-    font-family: 'rhyme-formal';
-    font-size: 2em;
-    color: #ffffff; /* ejemplo: rojo vino */
-    text-align: center;
-    justify-content: center;
-    }
+.nombre2 {
+  font-family: 'RhymeFormal', serif;
+  font-size: 2em;
+  color: #fff;
+  text-align: center;
+  justify-content: center;
+}
 
-    .subtitle {
-      font-family: 'Augereau', cursive;
-      font-size: 1.7em;
-      color: #ffffff; /* ejemplo: rojo vino */
-      text-align: center;
-    }
 
-        .subtitle2 {
-      font-family: 'Augereau';
-      font-size: 1em;
-      text-align: center;
-      padding-bottom: 10px;
-    }
+.subtitle {
+  font-family: 'Augereau', serif;
+  font-size: 1.7em;
+  color: #fff;
+  text-align: center;
+}
+
+.subtitle2 {
+  font-family: 'Augereau', serif;
+  font-size: 1em;
+  text-align: center;
+  padding-bottom: 10px;
+}
     
 
 .item2 {
@@ -287,7 +287,7 @@
             font-weight: 400;
             line-height: 0;
             transform: rotate(-1deg);
-            font-family: 'storytelling';
+              font-family: 'Storytelling', cursive;
         }
                 .titlemuskeyla {
             font-size: 120px;
