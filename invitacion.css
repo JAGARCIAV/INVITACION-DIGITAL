@@ -704,7 +704,7 @@
 }
 
 .item-regalo {
-      background: linear-gradient(135deg, #0000004b, #7a0e17);
+      background: linear-gradient( #7a0e17);
       text-align: center;
     color: white;
     min-height: 400px;
