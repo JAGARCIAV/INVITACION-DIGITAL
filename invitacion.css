@@ -5,12 +5,18 @@
       box-sizing: border-box;
     }
 
+
+
+
     body {
+        
+  color: white !important;
+  color-scheme: only light;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      background: #7a0e17 ;
+      background: #7a0e17 !important;
       font-family: Arial, sans-serif;
     }
 
@@ -193,7 +199,7 @@
 }
 
 
-    .nombre {
+    .nombrekeyla {
         display: flex;
     font-family: 'Amoresa', cursive;
     font-size: 3.2em;
@@ -602,6 +608,8 @@
   margin-bottom: 5px;
   text-align: center;
   padding-bottom: 6px;
+  padding-left: 20px;
+  padding-right: 20px;
       font-family: 'Amoresa', cursive;
 
 
