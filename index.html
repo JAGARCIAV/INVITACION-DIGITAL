@@ -364,18 +364,14 @@
 
     </div>
 
-     <div class="btn-reg" onclick="registrar()">
-    Confirmar Asistencia
-  </div>
+     <div class="btn-reg" onclick="registrar()">Confirmar Asistencia</div>
 
   <script>
 function registrar() {
-  if(localStorage.getItem("asistenciaRegistrada")) {
-    alert("Ya confirmaste tu asistencia ✅");
-  } else {
+
     localStorage.setItem("asistenciaRegistrada", "true");
     window.location.href = "https://docs.google.com/forms/d/e/FORM_ID/viewform";
-  }
+  
 }
 
   </script>
